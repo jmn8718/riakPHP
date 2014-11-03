@@ -1,0 +1,81 @@
+/*
+ * Globals
+ */
+
+body {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: #555;
+  padding-top: 60px;
+  padding-bottom: 30px;
+  /*padding-bottom: 50px;*/
+  height: 100%;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  margin-top: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  color: #333;
+}
+
+textarea.form{
+  resize: none;
+}
+
+.panel-body{
+	margin: 0 10px;
+}
+
+/*
+ * Footer
+ */
+
+.footer {
+  padding: 10px 10px;
+  color: #999;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-top: 1px solid #e5e5e5;
+}
+
+/*
+ * Blog posts
+ */
+
+.post {
+  margin-bottom: 10px;
+}
+.post-meta {
+  margin-right:20px;
+  margin-bottom: 5px;
+  color: #999;
+}
+.post-texto{
+	font-size: 18px;
+}
+
+/*
+ * Blog name and description
+ */
+
+.blog-header {
+  text-align: center;
+  background-color: #EEE;
+  margin-bottom: 10px;
+  padding: 10px 0;
+}
+.blog-title {
+  margin-top: 20px;
+  margin-bottom: 0;
+  font-size: 50px;
+  font-weight: normal;
+}
+.blog-description {
+  font-size: 20px;
+  color: #999;
+}
