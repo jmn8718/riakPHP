@@ -1,11 +1,22 @@
 <?php
-require_once 'metodos.php';
 require_once 'riak.php';
 
+/*echo '--------------------------------------<br>';
+$variable = getKeys(BUCKET_USUARIOS);
+foreach ($variable as $key) {
+	$a = '<a href="selectRtwits.php?usuario='.$key.'">'.$key.'</a>';
+	echo $a.'<br>';
+}*/
+printBucket("testNull");
+/*echo '/////////////////********-----------**********\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\';
+vaciarBucket('test');
 echo '/////////////////********-----------**********\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\';
-printBuckets();
-/*vaciarBucket('usuarios');
-sleep(3);
+/*sleep(3);
 printBuckets();*/
-echo '-----';
+$myBucket = getBucket("testNull");
+$obj = $myBucket->newObject(null, $value);
+$obj->store();
+print_r($obj);
+echo '--------------------------------------<br>';
+printBucket("testNull");
 ?>

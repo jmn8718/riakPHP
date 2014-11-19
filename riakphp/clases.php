@@ -10,7 +10,7 @@ class Usuario{
 }
 
 
-class Rtwit{
+class Rwit{
 	public function __construct($user, $text, $date = null){
 		$this->usuario = $user;
 		$this->texto = $text;
@@ -27,7 +27,7 @@ class Rtwit{
 	var $timestamp;
 
 	public function toJSON(){
-	$arr = array('texto'=> $this->texto , 'fecha'=> $this->fecha , 'timestamp' => $this->timestamp );
+		$arr = array('texto'=> $this->texto , 'fecha'=> $this->fecha , 'timestamp' => $this->timestamp );
 		return json_encode($arr);
 	}
 

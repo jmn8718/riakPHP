@@ -8,9 +8,9 @@ echo $password.'<br>';
 $texto = $_POST["texto"];
 echo $texto.'<br>';
 
-if(crearRtwit($usuario,$password,$texto)){
+if(crearRwit($usuario,$password,$texto)){
 	//echo 'rtwit insertado';
-	header('Location: selectRtwits.php?usuario='.$usuario);
+	header('Location: selectRwits.php?usuario='.$usuario);
 	die;	
 }
 else {

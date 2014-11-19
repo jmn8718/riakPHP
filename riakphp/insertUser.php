@@ -8,7 +8,7 @@ echo $password.'<br>';
 
 if(crearUsuario($usuario,$password)){
 	//echo 'usuario insertado';
-	header('Location: selectRtwits.php?usuario='.$usuario);
+	header('Location: selectRwits.php?usuario='.$usuario);
 	die;
 }
 else {

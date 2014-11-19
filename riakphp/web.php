@@ -42,7 +42,7 @@ function printHeader(){
 							<li><a href="about.php">About</a></li>
 							<li><a href="contact.php">Contact</a></li>
 						</ul>
-						<form class="navbar-form navbar-right" method="get" action="selectRtwits.php">
+						<form class="navbar-form navbar-right" method="get" action="selectRwits.php">
 							<div class="input-group">
 								<div class="input-group-addon">@</div>
 								<input type="text" class="form-control" name="usuario" placeholder="Search...">
@@ -74,7 +74,7 @@ function printWidgetNewRwit(){
 				Nuevo Rwit
 			</div>
 			<div class="panel-body">
-				<form class="form-horizontal" role="form" method="post" action="insertRtwit.php">
+				<form class="form-horizontal" role="form" method="post" action="insertRwit.php">
 					<div class="form-group">
 						<div class="input-group">
 							<div class="input-group-addon">@</div>
@@ -129,6 +129,7 @@ function printFooter(){
 				</div>
 				<footer>
 					<div class="footer navbar-fixed-bottom">
+						<a class="navbar-left" href="listUsers.php">listar usuarios</a>
 						Rwitter by <a href="http://twitter.com/jmn8718">@jmn8718</a>
 						<a class="navbar-right" href="#">Back to top</a>
 					</div>

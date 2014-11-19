@@ -15,30 +15,28 @@ function crearUsuarios($inicio, $cantidad){
 	}
 }
 
-function crearRtwits($cantidad){
+function crearRwits($cantidad){
 	$formatoUsuario = 'user%1$04d';
 	$formatoPassword = 'key%1$04d';
-	/*$formatoTexto[] = 'El usuario %1$s ha escrito en su muro un rwtit';
-	$formatoTexto[] = 'El usuario %1$s ha publicado un rtwit';
-	$formatoTexto[] = 'El usuario %1$s se aburre en casa'; 
-	$formatoTexto[] = 'caza moscas con el rabo'
-	$formatoTexto[] = 'tolon tolon';*/
 
 	for($i=0;$i<$cantidad;$i++){
 		$us = mt_rand(1, 49);
 		$usuario = sprintf($formatoUsuario, $us);
 		$password = sprintf($formatoPassword, $us);
 		$te = mt_rand(1, 49);
-		$texto = 'Pues hace un buen dia para el '.sprintf($formatoUsuario,$te);//sprintf($formatoTexto[$te], $usuario);
-		crearUsuario($usuario,$password);
-		if(crearRtwit($usuario,$password,$texto))
-			print("rtwit insertado<br>");
+		$texto = 'Pues hace un buen dia para el '.sprintf($formatoUsuario,$te).' by '.$usuario;
+		echo $texto;
+		//crearUsuario($usuario,$password);
+		if(crearRwit($usuario,$password,$texto))
+			print("\trwit insertado<br>");
 		else
-			print("no se ha insertado el rtwit<br>");		
-		sleep(0.5);
+			print("\tno se ha insertado el rwit<br>");
+		time_nanosleep(0, 200000000); //0.2 sec
 	}
 }
 
-//crearUsuarios(10,50);
-crearRtwits(150);
+print('START!!<br>');
+//crearUsuarios(1,50);
+crearRwits(150);
+print('DONE!!<br>');
 ?>
