@@ -12,9 +12,23 @@ printHeader();
 		<div class="col-md-6 col-md-offset-2">
 <?php
 	if (borrarRwit($usuario,$key)){
-		echo '<h3 class="text-center">BORRADO CON EXITO</h3><br>';
+?>
+			<div class="panel panel-success">
+				<div class="panel-heading">EXITO</div>
+				<div class="panel-body text-center">
+					<p>SE HA BORRADO</p>
+				</div>
+			</div>
+<?php
 	} else {
-		echo '<h3 class="text-center">NO SE HA PODIDO BORRAR</h3><br>';
+?>
+			<div class="panel panel-danger">
+				<div class="panel-heading">ERROR</div>
+				<div class="panel-body text-center">
+					<p>NO SE HA PODIDO BORRAR</p>
+				</div>
+			</div>
+<?php
 	}
 ?>			
 			<a href=<?php echo '"selectRwits.php?usuario='.$usuario.'"'; ?> class="list-group-item" > 

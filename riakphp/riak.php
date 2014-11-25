@@ -18,12 +18,19 @@ define('HOST', 'localhost');
 define('PORT', 10018);
 
 function getBucket($bucket){
+	//echo 'getBucket----<br>';
 	$client = new Basho\Riak\Riak(HOST, PORT);
 	$myBucket = $client->bucket($bucket);
+	$myBucket->setR(3);
+	$myBucket->setW(3);
+	$myBucket->setDW(3);
+	//print_r($myBucket);
+	//echo '-------<br>';
 	return $myBucket;
 }
 
 function hasKey($bucket,$key){
+	//echo 'hasKey----<br>';
 	$myBucket = getBucket($bucket);
 	if($myBucket->hasKey($key)){
 		return true;
@@ -33,6 +40,7 @@ function hasKey($bucket,$key){
 }
 
 function setKValue($bucket,$key,$value){
+	//echo 'setKValue----<br>';
 	$myBucket = getBucket($bucket);
 	$obj = $myBucket->newObject($key, $value);
 	$obj->store();
@@ -53,13 +61,18 @@ function setKValue($bucket,$key,$value){
 }
 
 function getKValue($bucket,$key){
+	//echo 'getKValue----<br>';
 	$myBucket = getBucket($bucket);
 	$fetched = $myBucket->get($key);
 	$http_code = $fetched->status();
+	//echo $http_code.'---<br>';
 	if ($http_code==200) {
 		//print('HIJO UNICOss<br>');
 		/*$resul[] = new KValue($fetched->getKey(),$fetched->getData());
 		return $resul;*/
+		//echo '*********<br>';
+		//print("key: ".$fetched->getKey().'<br>');
+		//print("data: ");print_r($fetched->getData()[texto]); echo '<br>';		
 		return new KValue($fetched->getKey(),$fetched->getData());
 	} elseif ($http_code==300) {
 		//print('SIBLINGS<br>');
@@ -76,6 +89,7 @@ function getKValue($bucket,$key){
 }
 
 function getKeys($bucket){
+	//echo 'getKeys----<br>';
 	$myBucket = getBucket($bucket);
 	$keys = $myBucket->getKeys();
 	return $keys;
@@ -83,10 +97,16 @@ function getKeys($bucket){
 
 function getNumberOfValues($key){
 	$keys = getKeys($key);
-	return count($keys);
+	$i = 0;
+	foreach ($keys as $k) {
+		if (getKValue($key,$k) !== null)
+			$i++;
+	}
+	return $i;
 }
 
 function printBucket($bucket){
+	//echo 'printBucket----<br>';
 	$myBucket = getBucket($bucket);
 	$keys = $myBucket->getKeys();
 	if (count($keys)==0) {
@@ -116,6 +136,7 @@ function printBucket($bucket){
 }
 
 function printBuckets(){
+	//echo 'printBuckets----<br>';
 	$client = new Basho\Riak\Riak(HOST, PORT);
 	$keys = $client->buckets();
 	foreach ($keys as $key) {
@@ -127,7 +148,9 @@ function printBuckets(){
 
 
 function removeKey($bucket,$key){
+	//echo 'removeKey----<br>';
 	$myBucket = getBucket($bucket);
+	$myBucket->setW(3);
 	$fetched = $myBucket->get($key);
 	$fetched->delete();
 	$status = $fetched->status();
@@ -144,6 +167,7 @@ function removeKey($bucket,$key){
 }
 
 function vaciarBucket($bucket){
+	//echo 'vaciarBucket----<br>';
 	$myBucket = getBucket($bucket);
 	$keys = $myBucket->getKeys();
 	foreach ($keys as $key) {

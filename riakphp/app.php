@@ -75,10 +75,10 @@ function crearRwit($usuario,$password,$texto){
 */
 function compararRwits($a, $b)
 {
-    if ($a->timestamp === $b->timestamp) {
+    if ($a->value['timestamp'] === $b->value['timestamp']) {
         return 0;
     }
-    return ($a->timestamp < $b->timestamp) ? 1 : -1;
+    return ($a->value['timestamp'] < $b->value['timestamp']) ? 1 : -1;
 }
 
 /**
@@ -88,13 +88,9 @@ function compararRwits($a, $b)
 function listarRwits($usuario){
 	if(existeUsuario($usuario)){
 		$keys = getKeys($usuario);
-		//print_r($keys);
 		foreach ($keys as $key) {
-			$rwit = getKValue($usuario,$key);
-			//print_r($rwit);
-			$resul [] = $rwit;
+			$resul [] = getKValue($usuario,$key);
 		}
-		//print_r($resul);
 		usort($resul, "compararRwits"); //ordena el array
 		return $resul;
 	}

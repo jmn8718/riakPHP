@@ -31,12 +31,12 @@ function crearRwits($cantidad){
 			print("\trwit insertado<br>");
 		else
 			print("\tno se ha insertado el rwit<br>");
-		time_nanosleep(0, 200000000); //0.2 sec
+		time_nanosleep(0, 700000000); //0.7 sec
 	}
 }
 
 print('START!!<br>');
 //crearUsuarios(1,50);
-crearRwits(150);
+crearRwits(50);
 print('DONE!!<br>');
 ?>
